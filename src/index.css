@@ -38,3 +38,31 @@ body {
   font-size: 12px;
   font-weight: 1.25rem;
 }
+
+section {
+  padding: 20px;
+}
+
+.form {
+  padding: 30px 20px;
+  justify-content: center;
+  gap: 40px;
+}
+
+.form > div {
+
+  width: 230px;
+  height: 35px;
+  border: solid 1px #D5D4D8;
+  border-radius: 5px;
+  text-indent: 12px;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}
+
+.form--text {
+  font-size: 12px;
+  font-weight: 300;
+  color: #0D0D0D;
+}
