@@ -1,3 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-size: larger;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+.flex {
+  display: flex;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 65px;
+  background: linear-gradient(to right, #672280, #A626D3);
+  padding: 30px 25px;
+}
+
+.header--logo {
+  width: 31px;
+  margin-right: 10px;
+}
+.header--title, .header--description {
+  margin: 0;
+}
+.header--title {
+  margin-right: auto;
 }
