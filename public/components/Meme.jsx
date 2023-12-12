@@ -1,6 +1,16 @@
 import React from 'react'
 
 export default function Meme() {
+
+  // set up top text and bottom text
+const [meme, setMeme] = React.useState({
+    topText: '',
+    bottomText: '',
+    randomImage: 'http://i.imgflip.com/1bij.jpg'
+})
+
+
+
   return (
     <div className='meme'>
       <div className='form'>
