@@ -7,8 +7,25 @@ export default function Meme() {
     bottomText: "",
     randomImage: "http://i.imgflip.com/1bij.jpg",
   });
+  //meme image state
+  const [memeImage, setMemeImage] = React.useState([])
+  //fetch meme images api 
+  React.useEffect(()=> {
+    fetch('https://api.imgflip.com/get_memes')
+    .then(res => res.json())
+    .then(data => setMemeImage(data.data.memes) )
+  }, [])
 
-  
+  //get random image 
+
+  function getMemeImages(){
+    const randomGen = Math.floor(Math.random() * memeImage.length)
+    const urls = memeImage[randomGen].url
+    setMemeImage(prevImage => ({
+      ...prevImage,
+      randomImage:urls
+    }))
+  }
   //get top text and bottom text
   function handleChange(event) {
     const { name, value } = event.target;
@@ -37,14 +54,14 @@ export default function Meme() {
           value={memeForm.bottomText}
           onChange={handleChange}
         />
-        <button> Get a new meme image 🖼</button>
+        <button onClick={getMemeImages}> Get a new meme image 🖼</button>
       </div>
       <div className="meme--form">
         <h1 className="meme--text top">{memeForm.topText}</h1>
         <h1 className="meme--text bottom">{memeForm.bottomText}</h1>
         <img
           className="meme--image"
-          src="http://i.imgflip.com/1bij.jpg"
+          src={memeForm.randomImage}
           alt="meme images"
         />
       </div>
