@@ -9,23 +9,27 @@ export default function Meme() {
   });
   //meme image state
   const [memeImage, setMemeImage] = React.useState([])
+
   //fetch meme images api 
   React.useEffect(()=> {
     fetch('https://api.imgflip.com/get_memes')
     .then(res => res.json())
-    .then(data => setMemeImage(data.data.memes) )
+    .then(data => setMemeImage(data.data.memes))
   }, [])
 
   //get random image 
 
   function getMemeImages(){
+
     const randomGen = Math.floor(Math.random() * memeImage.length)
     const urls = memeImage[randomGen].url
-    setMemeImage(prevImage => ({
-      ...prevImage,
-      randomImage:urls
+  
+    setMemeForm(prevMemeForm => ({
+      ...prevMemeForm,
+      randomImage: urls
     }))
   }
+
   //get top text and bottom text
   function handleChange(event) {
     const { name, value } = event.target;
@@ -35,9 +39,16 @@ export default function Meme() {
     }));
   }
 
+  //handle on submit of form 
+
+  function handleSubmit(event){
+    event.preventDefault()
+  } 
+
+  
   return (
     <div className="meme">
-      <div className="form">
+      <form className="form" onSubmit={handleSubmit} >
         <input
           type="text"
           placeholder="Shut up"
@@ -55,7 +66,7 @@ export default function Meme() {
           onChange={handleChange}
         />
         <button onClick={getMemeImages}> Get a new meme image 🖼</button>
-      </div>
+      </form>
       <div className="meme--form">
         <h1 className="meme--text top">{memeForm.topText}</h1>
         <h1 className="meme--text bottom">{memeForm.bottomText}</h1>
